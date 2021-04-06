@@ -16,6 +16,7 @@ include 'connectdb.php';
     switch ($whichSearch){
         case "day":
             $whichDay= $_POST["day"];
+            echo "Flights on ".$whichDay;
             $query = 'SELECT * FROM dayOffered, flight WHERE flight.airline=dayOffered.airline AND flight.flightNumber=dayOffered.flightNumber AND dayOffered.day="' . $whichDay . '"';
             $result=$connection->query($query);
             while ($row=$result->fetch()) {
