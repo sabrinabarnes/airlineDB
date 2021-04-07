@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
 <title>Sabrina's Flights-Flights on this Day</title>
 </head>
 <body>
@@ -9,10 +10,10 @@
 include 'connectdb.php';
 ?>
 
-<h1>Here are the flight options:</h1>
+<h1>Flight options</h1>
 <?php
 $whichSearch = $POST["search"];
-include 'display.php';
+include 'displaysearch.php';
 ?>
 
 <?php

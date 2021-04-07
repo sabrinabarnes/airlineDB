@@ -1,0 +1,42 @@
+.header {
+    padding: 0 px;
+}
+
+.sky-image {
+    background-image: url("sky.jpg");
+    height: 100%;
+    padding: 0px;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+body {
+    background-color: #b0e0e6;
+    padding: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri Light, 'Trebuchet MS', sans-serif;
+}
+
+label {
+    width: 200 px;
+    display: inline-block;
+}
+
+table {
+    font-size: 30 px;
+    width: 50%;
+}
+
+tr, td {
+    padding: 10px;
+    text-align: left;
+}
+tr:hover {background-color: #f5f5f5;}
+
+h1 {
+    color: black;
+    text-align: center;
+}

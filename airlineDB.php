@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type='text/css' href="style.css">
     <title>Sabrina's Flights</title>
 </head>
 
@@ -9,12 +10,39 @@
 <?php
 include 'connectdb.php';
 ?>
-<h1>Welcome to Sabrina's Flights</h1>
-<h2>Airlines we offer</h2>
+
+<div class="header">
+<div class="sky-image">
+  <div class="heading-text">
+    <h1>Welcome to Sabrina's Flights</h1>
+  </div>
+</div>
+</div>
+
+<img src="plane.jpg" align="right">
+<h2>Find flights by airline code and day</h2>
+<h3>Airlines we offer</h3>
+
+<?php
+include 'getairlines.php';
+?>
+
+</br>
+<form action="getflightsbyairline.php" method="post">
+    <label for="airlineCode">Airline Code</label>
+    <input type="text" id="airlineCode" name="airlineCode"></br>
+    <label for="day">Day of the Week</label>
+    <input type="text" id="day" name="day"></br>
+<input type="submit" value="Find Flights">
+</form>
+
+
+
+<h2>Flight Search</h2>
+<h3>How would you like to search for a flight</h3>
 
 <form action="getsearch.php" method="post">
-
-<h3>How would you like to search for a flight</h3>
+<table>
 <input type="radio" id="day" name="search" value="day">
 <label for="day">By day</label><br>
 <input type="radio" id="airline" name="search" value="airline">
@@ -25,6 +53,9 @@ include 'connectdb.php';
 <label for="arrival">By arrival city</label><br>
 <input type="radio" id="airplane" name="search" value="airplane">
 <label for="airplane">By airplane type</label><br>
+<input type="radio" id="all" name="search" value="all">
+<label for="all">See all available flights</label><br>
+</table>
 
 <input type="submit" value="Submit">
 </form>

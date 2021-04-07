@@ -4,11 +4,11 @@
     $result = $connection->query($query);
     echo "For which day are you looking to see a flight? </br>";
     while ($row = $result->fetch()) {
-            echo '<input type="radio" name="day" value="';
-            echo $row["day"];
-            echo '">' . $row["day"] . "<br>";
+        echo '<input type="radio" name="day" value="';
+        echo $row["day"];
+        echo '">' . $row["day"] . "<br>";
     }
-    ?>
+?>
 
 <?php
    $whichDay= $_POST["day"];
