@@ -91,6 +91,7 @@ if(!empty($whichAirline) && !empty($whichDeparture) && !empty($departureTime)
 }
 
 foreach($whichDays as $day){
+    echo "Adding days";
     echo "Day : ".$day.'<br/>';                                
     $insert2 = 'INSERT INTO dayOffered values ("' . $whichAirline . '",
                                     "' . $flightNumber . '",

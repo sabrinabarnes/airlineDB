@@ -41,6 +41,11 @@ include 'getairlines.php';
 <input type="submit" value="Click Here to Enter a New Flight">
 </form>
 
+<h2>Update Actual Arrival Time</h2>
+<form action="updatearrival.php" method="post">
+<input type="submit" value="Click Here to Update the Arrival Time of an Existing Flight">
+</form>
+
 <h2>Flight Search</h2>
 <h3>How would you like to search for a flight</h3>
 
@@ -55,7 +60,7 @@ include 'getairlines.php';
 <input type="radio" id="arrival" name="search" value="arrival">
 <label for="arrival">By arrival city</label><br>
 <input type="radio" id="airplane" name="search" value="airplane">
-<label for="airplane">By airplane type</label><br>
+<label for="airplane">By airplane tail number</label><br>
 <input type="radio" id="all" name="search" value="all">
 <label for="all">See all available flights</label><br>
 </table>

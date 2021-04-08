@@ -16,7 +16,7 @@ include 'connectdb.php';
 <form action="addnewflight.php" method="post">
 <h3>Select an airline:</h3>
 <?php
-    $query = 'SELECT * FROM airline';
+    $query = 'SELECT * FROM airline ORDER BY airlineName';
     $result = $connection->query($query);
     while ($row = $result->fetch()) {
             echo '<input type="radio" name="airline" value="';
@@ -27,7 +27,7 @@ include 'connectdb.php';
 
 <h3>Select a departure airport:</h3>
 <?php
-    $query = 'SELECT * FROM airport';
+    $query = 'SELECT * FROM airport ORDER BY airportName';
     $result=$connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="departureAirport" value="';
@@ -41,7 +41,7 @@ include 'connectdb.php';
 
 <h3>Select an arrival airport:</h3>
 <?php
-    $query = 'SELECT * FROM airport';
+    $query = 'SELECT * FROM airport ORDER BY airportName';
     $result=$connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="arrivalAirport" value="';
@@ -58,7 +58,7 @@ include 'connectdb.php';
 
 <h3>Select an airplane for this flight:</h3>
 <?php
-    $query = 'SELECT * FROM flight, airplane WHERE flight.airplane=airplane.airplaneID GROUP BY airplaneID';
+    $query = 'SELECT * FROM airplane';
     $result=$connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="airplane" value="';
