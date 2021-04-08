@@ -76,7 +76,18 @@ include 'connectdb.php';
             $query = 'SELECT * FROM airplane, flight WHERE flight.airplane=airplane.airplaneID AND airplane.airplaneID="' . $whichAirplane . '"';
             $result=$connection->query($query);
             while ($row=$result->fetch()) {
-                if ($numflights == 0) {echo "Flights using ".$whichAirplane."<br>";}
+                if ($numflights == 0) {
+                    echo "<h2>Flights using airplane ".$whichAirplane."<br></h2>";
+                    echo "<table>
+                    <tr>
+                        <td>Airline</td>
+                        <td>Flight Number</td>
+                        <td>Airplane ID</td>
+                        <td>Departure Airport</td>
+                        <td>Scheduled Departur</td>
+                        <td>Arrival Airport</td>
+                        <td>Scheduled Arrival</td>";
+                }
                 echo "<tr><td>".$row["airline"]."</td><td>".$row["flightNumber"]."</td><td>";
                 echo $row["airplane"]."</td><td>".$row["departureAirport"]."</td><td>".$row["scheduledDeparture"]."</td><td>";
                 echo $row["arrivalAirport"]."</td><td>".$row["scheduledArrival"]."</td><tr>";

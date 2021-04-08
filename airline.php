@@ -36,7 +36,10 @@ include 'getairlines.php';
 <input type="submit" value="Find Flights">
 </form>
 
-
+<h2>New Flight Entry</h2>
+<form action="newflight.php" method="post">
+<input type="submit" value="Click Here to Enter a New Flight">
+</form>
 
 <h2>Flight Search</h2>
 <h3>How would you like to search for a flight</h3>
