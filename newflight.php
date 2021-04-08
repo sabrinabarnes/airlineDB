@@ -31,13 +31,13 @@ include 'connectdb.php';
     $result=$connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="departureAirport" value="';
-        echo $row["aiportCode"];
+        echo $row["airportCode"];
         echo '">' . $row["airportName"] . "</br>";
     }   
 ?>
 
-<h3>Select a departure time</h3>
-<input type="time" name ="scheduledDeparture">
+<h3>Select a departure time:</h3>
+<input type="time" id="scheduledDeparture" name ="scheduledDeparture">
 
 <h3>Select an arrival airport:</h3>
 <?php
@@ -45,28 +45,31 @@ include 'connectdb.php';
     $result=$connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="arrivalAirport" value="';
-        echo $row["aiportCode"];
+        echo $row["airportCode"];
         echo '">' . $row["airportName"] . "</br>";
     }   
 ?>
 
-<h3>Enter the 3-digit flight number</h3>
+<h3>Select an arrival time:</h3>
+<input type="time" id="scheduledArrival" name ="scheduledArrival">
+
+<h3>Enter the 3-digit flight number:</h3>
 <input type="number" name="flightNumber" pattern="[0-9]*" inputmode="numeric">
 
+<h3>Select an airplane for this flight:</h3>
 <?php
     $query = 'SELECT * FROM flight, airplane WHERE flight.airplane=airplane.airplaneID GROUP BY airplaneID';
     $result=$connection->query($query);
-    echo "For which plane are you looking to see flights? </br>";
     while ($row = $result->fetch()) {
         echo '<input type="radio" name="airplane" value="';
         echo $row["airplaneID"];
-        echo '">' . $row["airplaneID"] . "<br>";
+        echo '">' . $row["airplaneID"] .  "<br>";
     }
 ?>
 
-<h3>Select which days of the week this flight will be offered</h3>
+<h3>Select which days of the week this flight will be offered:</h3>
 <?php
-    $query = "SELECT * FROM dayOffered GROUP BY day";
+    $query = 'SELECT * FROM dayOffered GROUP BY day';
     $result = $connection->query($query);
     while ($row = $result->fetch()) {
         echo '<input type="checkbox" name="days" value="';

@@ -6,6 +6,10 @@
     <title>Sabrina's Flights</title>
 </head>
 
+<?php
+include 'connectdb.php';
+?>
+
 <body>
 <?php
 //airline
@@ -15,23 +19,32 @@ if(!empty($_POST['airline'])) {
     echo "No airline selected. Please go back and select an airline.</br>";
 }
 //departure airport
-if(!empty($_POST['departureAirport'])) { 
+if(!empty($_POST["departureAirport"])) { 
     $whichDeparture = $_POST["departureAirport"];
 } else {
-    echo "No departure airport selected. Please go back select a departure airport.</br>";
+    echo "No departure airport selected. Please go back and select a departure airport.</br>";
 }
 //departure time
-if(!empty($_POST['departureTime'])) { 
-    $departureTime = $_POST["departureTime"];
+if(!empty($_POST["scheduledDeparture"])) { 
+    $departureTime = $_POST["scheduledDeparture"];
 } else {
     echo "No departure time selected. Please go back and select a departure time.</br>";
 }
+
 //arrival airport
 if(!empty($_POST['arrivalAirport'])) { 
     $whichArrival = $_POST["arrivalAirport"];
 } else {
     echo "No arrival airport selected. Please go back and select a arrival airport.</br>";
 }
+
+//arrival time
+if(!empty($_POST["scheduledArrival"])) { 
+    $arrivalTime = $_POST["scheduledArrival"];
+} else {
+    echo "No arrival time selected. Please go back and select an arrival time.</br>";
+}
+
 //flight number
 if(!empty($_POST['flightNumber'])){ 
     $flightNumber = $_POST["flightNumber"];
@@ -40,7 +53,7 @@ if(!empty($_POST['flightNumber'])){
 }
 //airplane ID
 if(!empty($_POST['airplane'])){ 
-    $flightNumber = $_POST["airplane"];
+    $airplaneID = $_POST["airplane"];
 } else {
     echo "No airplane selected. Please go back and select an airplane ID.</br>";
 }
@@ -51,25 +64,38 @@ if(!empty($_POST['days'])){
     echo "No departure time selected. Please go back and select a departure time.</br>";
 }
 
+echo $whichAirline . ' 
+' . $flightNumber . ', 
+' . $airplaneID . ', 
+' . $departureTime . ', 
+' . $departureTime . ', 
+' . $arrivalTime . ', 
+' . $arrivalTime . ', 
+' . $whichDeparture . ', 
+' . $whichArrival;
 
-$sql = 'INSERT INTO flight values ("' . $whichAirline . '",
+if(!empty($whichAirline) && !empty($whichDeparture) && !empty($departureTime) 
+    && !empty($whichArrival) && !empty($flightNumber) && !empty($airplaneID) ){
+    echo "Inserting";
+    $insert1 = 'INSERT INTO flight values ("' . $whichAirline . '",
                                     "' . $flightNumber . '",
-                                    "' . $whichPlane . '",
-                                    "' . $scheduledDeparture . '",
-                                    "' . $scheduledDeparture . '",
-                                    "' . $scheduledArrival . '",
-                                    "' . $scheduledArrival . '",
+                                    "' . $airplaneID . '",
+                                    "' . $departureTime . '",
+                                    "' . $departureTime . '",
+                                    "' . $arrivalTime . '",
+                                    "' . $arrivalTime . '",
                                     "' . $whichDeparture . '",
                                     "' . $whichArrival. '")';
+    $numRows = $connection->exec($insert1);
+    echo "This flight was added.";
+}
 
-
-$query = 'SELECT * FROM flight';
-$row=$result->fetch();
-$newkey = intval($row["maxid"]) + 1;
-$petid = (string)$newkey;
-$query2 = 'INSERT INTO pet values("' . $petid . '","' . $petName . '","' . $species . '","' . $whichOwner . '")';
-$numRows = $connection->exec($query2);
-echo "This flight was added!";
+foreach($whichDays as $day){
+    echo "Day : ".$day.'<br/>';                                
+    $insert2 = 'INSERT INTO dayOffered values ("' . $whichAirline . '",
+                                    "' . $flightNumber . '",
+                                    "' . $day. '")';
+}                                    
 ?>
 
 <?php

@@ -67,7 +67,7 @@
                 echo "<tr>
                     <td>".$row["airline"]."</td>
                     <td>".$row["flightNumber"]."</td>
-                    <td>" .$row["actualArrival"]."</td>
+                    <td>" .$row["scheduledArrival"]."</td>
                 </tr>";
             }
             echo "</table>";
