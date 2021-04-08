@@ -36,6 +36,9 @@ include 'connectdb.php';
     }   
 ?>
 
+<h3>Select a departure time</h3>
+<input type="time" name ="scheduledDeparture">
+
 <h3>Select an arrival airport:</h3>
 <?php
     $query = 'SELECT * FROM airport';
@@ -48,14 +51,25 @@ include 'connectdb.php';
 ?>
 
 <h3>Enter the 3-digit flight number</h3>
-<input type="text" name="flightNumber" pattern="[0-9]*" inputmode="numeric">
+<input type="number" name="flightNumber" pattern="[0-9]*" inputmode="numeric">
+
+<?php
+    $query = 'SELECT * FROM flight, airplane WHERE flight.airplane=airplane.airplaneID GROUP BY airplaneID';
+    $result=$connection->query($query);
+    echo "For which plane are you looking to see flights? </br>";
+    while ($row = $result->fetch()) {
+        echo '<input type="radio" name="airplane" value="';
+        echo $row["airplaneID"];
+        echo '">' . $row["airplaneID"] . "<br>";
+    }
+?>
 
 <h3>Select which days of the week this flight will be offered</h3>
 <?php
     $query = "SELECT * FROM dayOffered GROUP BY day";
     $result = $connection->query($query);
     while ($row = $result->fetch()) {
-        echo '<input type="checkbox" name="day" value="';
+        echo '<input type="checkbox" name="days" value="';
         echo $row["day"];
         echo '">' . $row["day"] . "<br>";
     }
