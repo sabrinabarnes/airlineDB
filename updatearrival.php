@@ -19,9 +19,10 @@ $query = 'SELECT * FROM flight';
 $result = $connection->query($query);
 while ($row = $result->fetch()) {
     echo '<input type="radio" id="flight" name="flight" value="';
-    echo $row["airline"] . '","' . $row["flightNumber"];
+    echo $row["airline"];
+    echo $row["flightNumber"];
     echo '">' . $row["airline"] . " " .$row["flightNumber"] . "<br>";
-    //echo '<input type="hidden" name="flightNumber" value="'.$row["flightNumber"].'">';
+    //echo '<input type="hidden" id="airline" name="airline" value="'.$row["airline"].'">';
 }
 ?>
 <h3>Select the actual departure time for this flight:</h3>
@@ -30,16 +31,16 @@ while ($row = $result->fetch()) {
 </form>
 
 <?php
-$actualDeparture=$_POST["departure"];
-$whichFlight=$_POST["flight"];
-//$flightNumber=$_POST["flightNumber"];
-
 if(isset($_REQUEST["submit"])){
+    $actualDeparture=$_POST["departure"];
+    $flight=$_POST["flight"];
+    $airline=substr($flight,0,2);
+    $flightNumber=substr($flight,2);
     $update = 'UPDATE flight
             SET actualDeparture="' . $actualDeparture . '" 
-            WHERE airline="' . $whichFlight[0] . '" AND flightNumber="' . $whichFlight[1] . '"';
+            WHERE airline="' .$airline. '" AND flightNumber="' . $flightNumber . '"';
     $numRows = $connection->exec($update);
-    echo "The departure time of flight " . $whichFlight[0] .$whichFlight[1] . " was updated.";
+    echo "The departure time of flight " . $airline . " " . $flightNumber . " was updated.";
 }
 ?>
 
