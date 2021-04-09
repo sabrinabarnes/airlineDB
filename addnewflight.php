@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type='text/css' href="style.css">
-    <title>Sabrina's Flights</title>
+    <title>Sabrina's Flights-Add Flight</title>
 </head>
 
 <?php
@@ -96,7 +96,7 @@ foreach($whichDays as $day){
     $insert2 = 'INSERT INTO dayOffered values ("' . $whichAirline . '",
                                     "' . $flightNumber . '",
                                     "' . $day. '")';
-}                                    
+}       // fix this                            
 ?>
 
 <?php

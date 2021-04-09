@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="style.css">
-<title>Sabrina's Flights-Flights on this Day</title>
+<title>Sabrina's Flights-Flight Search/title>
 </head>
 <body>
 <?php

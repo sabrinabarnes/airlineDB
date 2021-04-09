@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="style.css" type='text/css'>
-<title>Sabrina's Flights-Flights on this Day</title>
+<title>Sabrina's Flights-Flights</title>
 </head>
 <body>
 <?php
@@ -54,7 +54,7 @@ include 'connectdb.php';
             include 'getflightstable.php';
             if ($numflights == 0) {echo "There are no currently flights using " . $whichAirplane . ".";}
             break;                
-        }
+    }
         
 ?>
 </table>
