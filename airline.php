@@ -46,6 +46,27 @@ include 'getairlines.php';
 <input type="submit" value="Click Here to Update the Arrival Time of an Existing Flight">
 </form>
 
+<h2>Calculate average number of seats on a day</h2>
+<h3>Select a day</h3>
+<form action="calculateseats.php" method="post">
+  <?php
+  $query = 'SELECT * FROM dayOffered GROUP BY day';
+  $result = $connection->query($query);
+  echo "For which day are you looking to see flights? </br>";
+  while ($row = $result->fetch()) {
+      echo '<input type="radio" name="day" value="';
+      echo $row["day"];
+      echo '">' . $row["day"] . "<br>";
+  }
+
+  ?>
+  <input type="submit" id="submit" value="Calculate average seats">
+</form>
+
+<?php
+
+?>
+
 <h2>Flight Search</h2>
 <h3>How would you like to search for a flight</h3>
 

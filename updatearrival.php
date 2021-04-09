@@ -22,7 +22,6 @@ while ($row = $result->fetch()) {
     echo $row["airline"];
     echo $row["flightNumber"];
     echo '">' . $row["airline"] . " " .$row["flightNumber"] . "<br>";
-    //echo '<input type="hidden" id="airline" name="airline" value="'.$row["airline"].'">';
 }
 ?>
 <h3>Select the actual departure time for this flight:</h3>

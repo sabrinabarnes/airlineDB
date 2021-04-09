@@ -1,5 +1,5 @@
 <?php
-$result = $connection->query("select * from airline");
+$result = $connection->query("SELECT * FROM airline");
 echo "<table>";
 while ($row = $result->fetch()) {
 echo "<tr>
