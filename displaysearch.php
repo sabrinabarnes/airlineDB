@@ -72,8 +72,6 @@
             }
             echo "</table>";
         }
-    //echo '<input type="hidden" name="search" value="';
-    //echo '">' . $whichSearch . "<br>";
 ?>
 <input type="hidden" name="search" value="<?php echo $whichSearch;?>">
 <?php if($whichSearch != "all") {

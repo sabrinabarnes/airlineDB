@@ -57,27 +57,17 @@ if(!empty($_POST['airplane'])){
 } else {
     echo "No airplane selected. Please go back and select an airplane ID.</br>";
 }
-//days
+/*days
 if(!empty($_POST['days'])){ 
-    $whichDays = $_POST["days"];
-} else {
-    echo "No departure time selected. Please go back and select a departure time.</br>";
-}
+    $whichDays[] = $_POST["days"];
+}*/
 
-echo $whichAirline . ' 
-' . $flightNumber . ', 
-' . $airplaneID . ', 
-' . $departureTime . ', 
-' . $departureTime . ', 
-' . $arrivalTime . ', 
-' . $arrivalTime . ', 
-' . $whichDeparture . ', 
-' . $whichArrival;
+//echo $whichDays[0];
 
 if(!empty($whichAirline) && !empty($whichDeparture) && !empty($departureTime) 
     && !empty($whichArrival) && !empty($flightNumber) && !empty($airplaneID) ){
-    echo "Inserting";
-    $insert1 = 'INSERT INTO flight values ("' . $whichAirline . '",
+    $insert1 = 'INSERT INTO flight values (
+                                    "' . $whichAirline . '",
                                     "' . $flightNumber . '",
                                     "' . $airplaneID . '",
                                     "' . $departureTime . '",
@@ -87,17 +77,52 @@ if(!empty($whichAirline) && !empty($whichDeparture) && !empty($departureTime)
                                     "' . $whichDeparture . '",
                                     "' . $whichArrival. '")';
     $numRows = $connection->exec($insert1);
-    echo "This flight was added.";
+    echo "<h3>New Flight</h3>";
+    echo "<table>
+            <tr>
+                <td>Airline</td>
+                <td>Flight Number</td>
+                <td>Airplane Tail Number</td>
+                <td>Departure Airport</td>
+                <td>Scheduled Departure</td>
+                <td>Arrival Airport</td>
+                <td>Scheduled Arrival</td>
+            </tr>";
+    echo "<tr>
+        <td>".$whichAirline."</td>
+        <td>".$flightNumber."</td>
+        <td>".$airplaneID."</td>
+        <td>".$whichDeparture."</td>
+        <td>".$departureTime."</td>
+        <td>".$whichArrival."</td>
+        <td>".$arrivalTime."</td>
+        <tr>";                
+    
+    echo "This flight was added";
 }
 
-foreach($whichDays as $day){
-    echo "Adding days";
-    echo "Day : ".$day.'<br/>';                                
-    $insert2 = 'INSERT INTO dayOffered values ("' . $whichAirline . '",
+if(!empty($_POST['days'])){
+    echo " on ";
+    $num_days=0;
+    foreach($_POST['days'] as $day){
+        if($num_days!=0){echo " and ";}
+        $insert2 = 'INSERT INTO dayOffered values ("' . $whichAirline . '",
                                     "' . $flightNumber . '",
-                                    "' . $day. '")';
-}       // fix this                            
+                                    "' . $day . '")';
+
+        echo $day;
+        $num_days++;
+        $numRows = $connection->exec($insert2);
+    }
+    echo ".";
+}
 ?>
+<!--
+<form action="getsearch.php" method="post">
+<input type="hidden" name="search" value="all">
+<input type="submit" value="Click Here to See All Flights">
+</form>
+-->
 
 <?php
 $connection = NULL;

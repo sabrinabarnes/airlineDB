@@ -71,10 +71,12 @@ include 'connectdb.php';
 <?php
     $query = 'SELECT * FROM dayOffered GROUP BY day';
     $result = $connection->query($query);
+    //$i=0;
     while ($row = $result->fetch()) {
-        echo '<input type="checkbox" name="days" value="';
+        echo '<input type="checkbox" id="'.$row["day"].'" name="days[]" value="';
         echo $row["day"];
         echo '">' . $row["day"] . "<br>";
+        //$i++;
     }
 ?>
 
