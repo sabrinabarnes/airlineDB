@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type='text/css' href="style.css">
-    <title>Sabrina's Flights-Update Arrival</title>
+    <title>Sabrina's Flights-Update Departure</title>
 </head>
 
 <?php

@@ -41,9 +41,9 @@ include 'getairlines.php';
 <input type="submit" value="Click Here to Enter a New Flight">
 </form>
 
-<h2>Update Actual Arrival Time</h2>
-<form action="updatearrival.php" method="post">
-<input type="submit" value="Click Here to Update the Arrival Time of an Existing Flight">
+<h2>Update Actual Departure Time</h2>
+<form action="updatedeparture.php" method="post">
+<input type="submit" value="Click Here to Update the Departure Time of a Flight">
 </form>
 
 <h2>Calculate average number of seats on a day</h2>
